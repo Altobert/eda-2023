@@ -5,6 +5,8 @@
 
 #define LIMITE 10 // limite numeos primos
 
+int ** matrix;
+
 int buscaMayor(int a []);
 
 int compararColecciones(int a [], int b []);
@@ -14,6 +16,50 @@ void multiplicaMatrices(int a[], int b[]);
 int intercambiarValores(int a, int b);
 
 int dias_segundos(int dias);
+
+int calcularFactorial(int n);
+
+int potenciacion(int base, int exponente);
+
+int potenciacion(int base, int exponente){
+
+    int incremento = base;
+    int resultado = base;
+
+    int i=1;
+
+    while (i < exponente)
+    {
+        int j = 1;
+        while (j < base)
+        {
+            /* code */
+            resultado = resultado + incremento;
+            j = j + 1;
+        }
+        incremento = resultado;
+        i = i + 1;
+                
+    }
+    
+    return incremento;
+
+}
+
+int calcularFactorial(int n){
+
+    int factorial = 1;
+
+    while ( n > 1)
+    {
+        /* code */
+        factorial = factorial * n;
+        n=n-1;
+    }
+    
+
+    return factorial;
+}
 
 int dias_segundos(int dias){
     int segundos = dias * 24 * 3600;
@@ -48,6 +94,20 @@ void multiplicaMatrices(int a[], int b[]){
     
 }
 
+int euclides(int mayor, int menor);
+
+int euclides(int mayor, int menor){
+    int resto = mayor % menor;
+    while (resto != 0)
+    {        
+        /* code */
+        mayor = menor;
+        menor = resto;
+        resto = mayor % menor;
+    }
+    return menor;
+}
+
 int compararColecciones(int a [], int b []){
 
     int contador = 0;
@@ -57,7 +117,7 @@ int compararColecciones(int a [], int b []){
         while (j < LIMITE)
         {
             if(a[i] == b[j]){
-                contador = contador +1;
+                contador = contador +1;                
             }
             j = j + 1;
         }
@@ -101,6 +161,15 @@ int main (){
 
     valor = dias_segundos(30);
     printf("%d dias a segundos %d \n",30,valor);
+
+    valor = euclides(500, 66);
+    printf("euclides %d \n",valor);
+
+    valor = calcularFactorial(7);
+    printf("factorial %d \n",valor);
+
+    valor = potenciacion(5, 10);
+    printf("potenciacion %d \n",valor);
 
     return 0;
 }
